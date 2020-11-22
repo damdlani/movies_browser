@@ -10,15 +10,16 @@ export const moviesSlice = createSlice({
     totalResults: null,
     results: [],
     isError: false,
+    focusSearch: false,
   },
   reducers: {
-    fetchMovies: (state, {payload}) => {
+    fetchMovies: (state, { payload }) => {
       state.isLoading = true;
     },
-    fetchMoviesByQuery: (state, {payload}) => {
+    fetchMoviesByQuery: (state, { payload }) => {
       state.isSearchLoading = true;
     },
-    fetchMoviesSuccess: (state, {payload}) => {
+    fetchMoviesSuccess: (state, { payload }) => {
       state.isLoading = false;
       state.isSearchLoading = false;
       state.isError = false;
@@ -50,6 +51,9 @@ export const moviesSlice = createSlice({
     setFirstPage: (state) => {
       state.currentPage = 1;
     },
+    setFocusOnSearch: (state, { payload: search }) => {
+      state.focusSearch = search;
+    },
   },
 });
 
@@ -62,6 +66,7 @@ export const {
   setLastPage,
   setPreviousPage,
   setFirstPage,
+  setFocusOnSearch,
 } = moviesSlice.actions;
 
 export const selectMovies = (state) => state.movies.results;
@@ -71,5 +76,6 @@ export const selectTotalResults = (state) => state.movies.totalResults;
 export const selectLoadingSearchStatus = (state) => state.movies.isSearchLoading;
 export const selectLoading = (state) => state.movies.isLoading;
 export const selectErrorStatus = (state) => state.movies.isError;
+export const selectSearchFocus = (state) => state.movies.focusSearch;
 
 export default moviesSlice.reducer;

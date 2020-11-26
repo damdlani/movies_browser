@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import FadeIn from "react-fade-in";
-import { useQueryParameter } from "../../../hooks/queryParameters";
 import {
     fetchPeople,
     selectLoadingStatus,
@@ -21,12 +20,11 @@ import { Spinner, SpinnerBox } from "../../../common/Spinner/styled";
 import { ListContainer, Wrapper } from "../../../common/Containers/styled";
 import { GoTopButton } from "../../../common/Header/Menu/Navigation/styled";
 
-export const PeoplePage = () => {
-    const query = useQueryParameter(QUERY_PARAMETER);
+export const PeoplePage = ({selectors}) => {
+    const query = useSelector(selectors.selectQuery());
     const peopleResult = useSelector(selectPeople);
     const totalResults = useSelector(selectTotalResults);
     const searchingLoadingStatus = useSelector(selectLoadingStatus);
-    const page = useQueryParameter(PAGE_PARAMETER);
     const loading = useSelector(selectLoading);
     const errorStatus = useSelector(selectErrorStatus);
     const dispatch = useDispatch();
@@ -50,15 +48,9 @@ export const PeoplePage = () => {
 
     useEffect(() => {
         if (!query || query === "") {
-            dispatch(fetchPeople({ page: "1" }));
+            dispatch(fetchPeople());
         }
     }, [dispatch, query]);
-
-    useEffect(() => {
-        if (!query || query === "") {
-            dispatch(fetchPeople({ page }));
-        }
-    }, [dispatch, page]);
 
     return (
         <Wrapper DataType={"peoplePage"}>

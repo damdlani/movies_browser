@@ -1,45 +1,30 @@
-import React, {useEffect} from "react";
-import {useSelector} from "react-redux";
-import {selectCurrentPage, selectTotalPages} from "../../features/movies/MoviesPopular/moviesSlice";
-import {selectPeopleCurrentPage, selectPeopleTotalPages} from "../../features/people/PeoplePopular/peopleSlice";
-import {useChangePageParameter} from "../../hooks/queryParameters";
-import {BackButton} from "./BackButton";
-import {NextButton} from "./NextButton";
-import {PAGE_PARAMETER} from "../../lib/consts";
-import {Pagination, Text, Number} from "./styled";
+import React from "react";
+import { BackButton } from "./BackButton";
+import { NextButton } from "./NextButton";
+import { Number, Pagination, Text } from "./styled";
+import { useGoToPage } from "../../hooks/useGoToPage";
 
-export const Footer = () => {
-    const PageParameterChange = useChangePageParameter();
-    const moviesCurrentPage = useSelector(selectCurrentPage);
-    const moviesTotalPages = useSelector(selectTotalPages);
-    const peopleCurrentPage = useSelector(selectPeopleCurrentPage);
-    const peopleTotalPages = useSelector(selectPeopleTotalPages);
+export const Footer = ({page, totalPages}) => {
+  const goToPage = useGoToPage();
+  const isFirstPage = page === 1;
+  const isLastPage = page === totalPages;
 
-    useEffect(() => {
-        PageParameterChange({
-            key: PAGE_PARAMETER,
-            value: window.location.href.includes("people") ?
-                peopleCurrentPage <= peopleTotalPages ? peopleCurrentPage : peopleTotalPages
-                :
-                moviesCurrentPage <= moviesTotalPages ? moviesCurrentPage : moviesTotalPages
-        });
-    }, [moviesCurrentPage, peopleCurrentPage]);
-
-    return (
-        <Pagination>
-            <BackButton
-                firstTitle="First"
-                secondTitle="Previous"
-            />
-            {window.location.href.includes("people") ?
-                <Text>Page <Number>{peopleCurrentPage}</Number> of <Number>{peopleTotalPages}</Number></Text>
-                :
-                <Text>Page <Number>{moviesCurrentPage}</Number> of <Number>{moviesTotalPages}</Number></Text>
-            }
-            <NextButton
-                firstTitle="Next"
-                secondTitle="Last"
-            />
-        </Pagination>
-    )
+  return (
+      <Pagination>
+        <BackButton
+            page={page}
+            goToPage={goToPage}
+            isFirstPage={isFirstPage}
+            firstTitle="First"
+            secondTitle="Previous"
+        />
+        <Text>Page <Number>{page}</Number> of <Number>{totalPages}</Number></Text>
+        <NextButton
+            page={page}
+            totalPages={totalPages}
+            goToPage={goToPage}
+            firstTitle="Next"
+            secondTitle="Last"/>
+      </Pagination>
+  )
 };

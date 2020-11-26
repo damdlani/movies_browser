@@ -1,8 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import FadeIn from "react-fade-in";
-import { useQueryParameter } from "../../hooks/queryParameters";
-import { useMovieDetail } from "../../hooks/useMovieDetail";
 import { fetchPeople } from "../../features/people/PeoplePopular/peopleSlice";
 import { fetchMovieDetail, selectIsError, selectMovieDetail } from "../../features/movies/MovieDetail/movieDetailSlice";
 import {
@@ -35,8 +33,9 @@ import { QUERY_PARAMETER } from "../../lib/consts";
 import { DetailsContainer } from "./styled";
 import { Wrapper, Slider, SliderContainer, SliderButton } from "../Containers/styled";
 import { Spinner, SpinnerBox } from "../Spinner/styled";
+import { useGenres } from "../../hooks/useGenres";
 
-export const SinglePage = ({ match, detailType, listType }) => {
+export const SinglePage = ({ match, detailType, listType, selectors }) => {
 
     const dispatch = useDispatch();
     const movieDetail = useSelector(selectMovieDetail);
@@ -53,9 +52,9 @@ export const SinglePage = ({ match, detailType, listType }) => {
     const isPersonCreditsError = useSelector(selectIsPersonCreditsError);
     const isPeopleError = useSelector(selectPersonIsError);
     const isMovieError = useSelector(selectIsError);
-    const getMovieGenres = useMovieDetail();
+    const getMovieGenres = useGenres();
     const id = match.params.id;
-    const query = useQueryParameter(QUERY_PARAMETER);
+    const query = useSelector(selectors.selectQuery());
 
     const sortedPersonCast = [...personCast];
     sortedPersonCast.sort((a, b) => {

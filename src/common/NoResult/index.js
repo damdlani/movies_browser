@@ -1,12 +1,11 @@
 import React from "react";
 import { Title } from "../../common/Title";
-import { useQueryParameter } from "../../hooks/queryParameters";
-import { QUERY_PARAMETER } from "../../lib/consts";
 import noResultPicture from "../../images/noResult.png"
 import { Image } from "./styled"
+import { useSelector } from "react-redux";
 
-export const NoResult = () => {
-  const query = useQueryParameter(QUERY_PARAMETER);
+export const NoResult = ({selectors}) => {
+  const query = useSelector(selectors.selectQuery());
 
   return (
       <>

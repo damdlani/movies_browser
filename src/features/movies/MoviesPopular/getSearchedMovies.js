@@ -1,12 +1,9 @@
-import { API_KEY, URL_ADDRESS } from "../../../lib/consts";
+import { fetchFromAPI } from "../../../lib/fetchFromAPI";
 
-export const getSearchedMovies = async (query, page) => {
-  if (query && query.trim() !== "") {
-    const response = await fetch(`${URL_ADDRESS}/search/movie?api_key=${API_KEY}&language=en-US&page=${page}&query=${query}`);
-
-    if (!response.ok) {
-      throw new Error(response.statusText)
-    }
-    return response.json();
-  }
-};
+export const getSearchedMovies = ({query, page}) => fetchFromAPI({
+  path: "/search/movie",
+  parameters: {
+    page,
+    query,
+  },
+});

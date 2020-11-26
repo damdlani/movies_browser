@@ -6,7 +6,6 @@ import { personDetailSaga } from "./features/people/PersonDetail/personDetailSag
 import { personCreditsSaga } from "./features/people/PersonCredits/personCreditsSaga";
 import { movieDetailSaga } from "./features/movies/MovieDetail/movieDetailSaga";
 import { movieCreditsSaga } from "./features/movies/MovieCredits/movieCreditsSaga";
-import { searchedMoviesSaga } from "./features/movies/MoviesPopular/searchedMoviesSaga";
 import { searchedPeopleSaga } from "./features/people/PeoplePopular/searchedPeopleSaga";
 
 export default function* rootSaga () {
@@ -18,8 +17,6 @@ export default function* rootSaga () {
     movieCreditsSaga(),
     personDetailSaga(),
     personCreditsSaga(),
-    searchedMoviesSaga(),
     searchedPeopleSaga(),
-    searchedMoviesSaga(),
   ]);
 }

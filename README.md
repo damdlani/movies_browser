@@ -4,7 +4,7 @@
 <br>
 <br>
 ## Demo
-[Movies Browser (GitHub Pages)](https://anetaszynal.github.io/movies_browser/)
+[Movies Browser (GitHub Pages)](https://anetaszynal.github.io/movies_browser/)  SORRY! CURRENTLY UNAVAILABLE, need to be fixed
 
 ## Description
 

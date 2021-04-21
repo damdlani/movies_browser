@@ -5,6 +5,7 @@
 <br>
 ## Demo
 [Movies Browser (GitHub Pages)](https://anetaszynal.github.io/movies_browser/)  SORRY! CURRENTLY UNAVAILABLE, need to be fixed 
+<br>
 To run locally: 
 - download repository 
 - in terminal run 'npm install'

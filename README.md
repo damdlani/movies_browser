@@ -4,7 +4,13 @@
 <br>
 <br>
 ## Demo
-[Movies Browser (GitHub Pages)](https://anetaszynal.github.io/movies_browser/)  SORRY! CURRENTLY UNAVAILABLE, need to be fixed
+[Movies Browser (GitHub Pages)](https://anetaszynal.github.io/movies_browser/)  SORRY! CURRENTLY UNAVAILABLE, need to be fixed 
+To run locally: 
+- download repository 
+- in terminal run 'npm install'
+- run 'npm start'
+
+Sorry for the inconvenience, it is temporary.
 
 ## Description
 

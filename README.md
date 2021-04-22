@@ -6,8 +6,6 @@
 ## Demo
 [Movies Browser (GitHub Pages)](https://damdlani.github.io/movies_browser/)  
 
-Sorry for the inconvenience, it is temporary.
-
 ## Description
 
 **Movies Browser** helps you to **explore films and people database**, find short descriptions and many information about **ratings, cast and crew**. Enjoy!

@@ -113,11 +113,11 @@ export const SinglePage = ({ match, detailType, listType }) => {
     useEffect(() => {
         window.addEventListener("resize", updateWidth)
         setTimeout(() => {
-            if(crewSlider.current.scrollWidth <= container.current.scrollWidth){
+            if(crewSlider.current?.scrollWidth <= container.current?.scrollWidth){
                 setCrewDisable(true);
             } else {setCrewDisable(false)}
 
-            if(castSlider.current.scrollWidth <= container.current.scrollWidth){
+            if(castSlider.current?.scrollWidth <= container.current?.scrollWidth){
                 setCastDisable(true);
             } else{setCastDisable(false)}
         }, 1000);
